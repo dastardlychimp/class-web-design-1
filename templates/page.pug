@@ -5,19 +5,16 @@ html
 
   body
     block head
-      header
         h1 First Capture
+        h2 A place to start your photography
     nav
       ul
-        li
-          a(href='/pages/') About
-        li
-          a(href='/pages/exposure.html') Exposure
-        li
-          a(href='/pages/glossary.html') Glossary
+        each name, page in pages
+          li
+            a(href=`/pages/${page}.html`)= name
     block content
     block foot
       footer
-        | First Capture &copy; 2017 &bullet; Darien Hess &bullet;
+        | &copy; First Capture 2017 &bullet; Darien Hess &bullet;
         |
         a(href='mailto:admin@quixtor.com') Send Mail

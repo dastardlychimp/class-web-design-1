@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "develop": "set NODE_ENV=development&& nodemon build.js -e js,pug",
-    "production": "set NODE_ENV=production&& node build.js",
+    "develop": "cross-env NODE_ENV=development nodemon build.js -e js,pug",
+    "production": "cross-env NODE_ENV=production node build.js",
+    "develop-reload": "npm run develop | npm run reload",
     "reload": "reload -d ./build -s ./pages/index.html -b",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,5 +14,10 @@
   "license": "ISC",
   "dependencies": {
     "pug": "^2.0.0-rc.4"
+  },
+  "devDependencies": {
+    "cross-env": "^5.1.1",
+    "nodemon": "^1.12.1",
+    "reload": "^2.2.2"
   }
 }

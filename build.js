@@ -6,7 +6,16 @@ const glossary = require('./glossary')
 const path_page       = path.join(__dirname, '/templates/pages')
 const path_build      = path.join(__dirname, '/build')
 const path_build_html = path.join(path_build, '/pages')
-const data            = {glossary}
+const data = {
+    glossary,
+    pages: {
+        'index': 'About',
+        'exposure': 'Exposure',
+        'lighting': 'Lighting',
+        'design': 'Design Principles',
+        'glossary': 'Glossary'
+    }
+}
 
 fs.readdir(path_page, (err, files) => {
     if (err) throw err
