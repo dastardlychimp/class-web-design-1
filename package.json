@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "develop": "nodemon build.js -e js,pug",
+    "develop": "set NODE_ENV=development&& nodemon build.js -e js,pug",
+    "production": "set NODE_ENV=production&& node build.js",
     "reload": "reload -d ./build -s ./pages/index.html -b",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

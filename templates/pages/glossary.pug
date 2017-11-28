@@ -4,10 +4,15 @@ append head
   h2 Glossary
 
 block content
+  - let env = process.env.NODE_ENV
+  - let production = env
+  h3= env
+  h3= production
   dl
-    each val, index in glossary
-      dt= index.split('-').join(' ')
-      dd= val
+    each val, key in glossary
+      if process.env.NODE_ENV !== 'production' || val !== ''
+        dt(id=key.split(' ').join('-'))= key
+        dd= val
 
 
 
