@@ -1,4 +1,21 @@
 extends ../page.pug
 
 block content
-  h1 Design Priniples
+  - var principles = ['lines', 'shapes', 'value', 'color', 'texture', 'space', 'pattern', 'contrast', 'balance', 'movement']
+
+  h1 Design Principles
+  ul
+    each principle in principles
+      li
+        a(href=`#${principle}`)= principle.charAt(0) + principle.slice(1)
+
+  h2(id='lines') Lines
+  h2(id='shapes') Shapes
+  h2(id='value') Value
+  h2(id='color') Color
+  h2(id='texture') Texture
+  h2(id='space') Space
+  h2(id='pattern') Pattern
+  h2(id='contrast') Contrast
+  h2(id='balance') Balance
+  h2(id='movement') Movement
