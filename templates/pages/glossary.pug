@@ -1,0 +1,13 @@
+extends ../page.pug
+
+append head
+  h2 Glossary
+
+block content
+  dl
+    each val, index in glossary
+      dt= index.split('-').join(' ')
+      dd= val
+
+
+
