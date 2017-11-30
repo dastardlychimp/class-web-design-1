@@ -1,4 +1,5 @@
 extends ../page.pug
+include ../mixins/index.pug
 
 block content
   h1 About
@@ -12,8 +13,8 @@ block content
     Some of my favorite photographers
   ul
     li
-      a(href='http://www.mikkolagerstedt.com/galleries') Mikko Lagerstedt
+      +link_external('http://www.mikkolagerstedt.com/galleries', 'Mikko Lagerstedt')
     li
-      a(href='http://www.oprisco.com/') Oleg Oprisco
+      +link_external('http://www.oprisco.com/', 'Oleg Oprisco')
     li
-      a(href='https://www.flickr.com/photos/brookeshaden') Brooke Shaden
+      +link_external('https://www.flickr.com/photos/brookeshaden', 'Brooke Shaden')
