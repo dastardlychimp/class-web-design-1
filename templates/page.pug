@@ -4,6 +4,7 @@ html
     title First Capture
 
   body
+    // HEAD
     block head
         h1 First Capture
         h2 A place to start your photography
@@ -11,8 +12,12 @@ html
       ul
         each name, page in pages
           li
-            a(href=`/pages/${page}.html`)= name
+            a(href=`${base_path}/${page}.html`)= name
+
+    // CONTENT
     block content
+
+    // FOOT
     block foot
       footer
         | &copy; First Capture 2017 &bullet; Darien Hess &bullet;
