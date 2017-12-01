@@ -1,9 +1,10 @@
-const path     = require('path')
-const fs       = require('fs')
-const pug      = require('pug')
-const del      = require('del')
-const config   = require('./config')
-const glossary = require('./glossary')
+const path      = require('path')
+const fs        = require('fs')
+const pug       = require('pug')
+const del       = require('del')
+const validator = require('html-validator')
+const config    = require('./config')
+const glossary  = require('./glossary')
 
 const path_build        = path.join(__dirname, '/build')
 const path_build_module = path.join(path_build, config.MODULE)
@@ -39,7 +40,8 @@ function writeHtmlFiles() {
                     ext: '.html'
                 })
                 const html = pug.renderFile(path_file, data)
-    
+
+                validateHtml(html)
                 return writeFilePromise(path_file_write, html)
                     .catch(e => console.log(e))
             })
@@ -56,6 +58,15 @@ function makeDirPromise(path) {
             resolve()
         })
     })
+}
+
+function validateHtml(html) {
+    validator({
+        data: html,
+        format: 'json'
+    })
+        .then((data) => data.messages.length > 0 ? console.error(data) : null)
+        .catch(console.error)
 }
 
 function writeFilePromise(path, content) {
