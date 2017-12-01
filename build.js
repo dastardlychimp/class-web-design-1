@@ -11,7 +11,7 @@ const path_build_html   = path.join(path_build_module, '/')
 const path_page         = path.join(__dirname, '/templates/pages')
 
 const data = {
-    base_path: path.join('/', config.MODULE),
+    base_path: '/' + config.MODULE,
     glossary,
     pages: {
         'index': 'About',
@@ -22,8 +22,8 @@ const data = {
     }
 }
 
-del([`${path_build}/*`])
-    .then(makeDirPromise(path_build_module))
+del([`${path_build_module}/**`])
+    .then(() => makeDirPromise(path_build_module))
     .then(writeHtmlFiles)
 
 function writeHtmlFiles() {
@@ -53,7 +53,7 @@ function makeDirPromise(path) {
     return new Promise((resolve, reject) => {
         fs.mkdir(path, err => {
             if (err) throw err
-            else resolve()
+            resolve()
         })
     })
 }
