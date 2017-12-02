@@ -3,20 +3,24 @@ html(lang='en')
   head
     meta(charset='UTF-8')
     title First Capture
+    link(rel='stylesheet' type='text/css' href=`${base_path}/css/index.css`)
+    link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,400i,600')
 
   body
     // HEAD
-    block head
-        h1 First Capture
-        h2 A place to start your photography
-    nav
-      ul
-        each name, page in pages
-          li
-            a(href=`${base_path}/${page}.html`)= name
+    header
+      block head
+          h1.heading First Capture
+          h2.subheading A place to start your photography
+      nav
+        ul
+          each name, page in pages
+            li
+              a(href=`${base_path}/${page}.html`)= name
 
     // CONTENT
-    block content
+    #content
+      block content
 
     // FOOT
     block foot

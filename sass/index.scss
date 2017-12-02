@@ -1,0 +1,57 @@
+$primary: #84BAE5;
+$secondary: #253440;
+$tertiary: #49677F;
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    margin: 0;
+}
+
+nav {
+    background-color: $secondary;
+
+    >ul {
+        list-style-type: none;
+        padding: 0;
+
+        >li {
+            display: inline-block;
+            padding: 5px 15px;
+
+            >a {
+                text-decoration: none;
+                color: white;
+            }
+        }
+
+        >li:hover {
+            background-color: $primary;
+        }
+    }
+}
+
+header {
+    margin: 0 5%;
+
+    h1.heading {
+        margin: 10px 0 10px 5px;
+    }
+    
+    h2.subheading {
+        margin: 0 0 10px 5px;
+        font-size: 1em;
+    }
+}
+
+#content {
+    p {
+        font-size: 1.2rem;
+        line-height: 1.4;
+    }
+
+    margin: 0 12.5%;
+}
