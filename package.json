@@ -4,20 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "develop": "cross-env NODE_ENV=development nodemon build.js -e js,pug",
+    "develop": "cross-env NODE_ENV=development nodemon build.js -e js,pug,scss --ignore build/",
+    "debugger": "cross-env NODE_ENV=development nodemon inspect build.js -e js,pug,scss --ignore build/",
     "production": "cross-env NODE_ENV=production node build.js",
     "develop-reload": "npm run develop | npm run reload",
-    "reload": "reload -d ./build/module-4 -s ./index.html -b",
+    "reload": "reload -d build/ -s module-4/index.html -b",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "del": "^3.0.0",
+    "node-sass": "^4.7.2",
     "pug": "^2.0.0-rc.4"
   },
   "devDependencies": {
     "cross-env": "^5.1.1",
+    "css-validator": "^0.8.0",
     "html-validator": "^2.2.3",
     "nodemon": "^1.12.1",
     "reload": "^2.2.2"
