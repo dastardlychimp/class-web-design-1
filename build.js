@@ -21,7 +21,6 @@ const data = {
     pages: {
         'index': 'About',
         'exposure': 'Exposure',
-        'lighting': 'Lighting',
         'design': 'Design Principles',
         'glossary': 'Glossary'
     }

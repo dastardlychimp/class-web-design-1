@@ -4,7 +4,7 @@ block content
   - let env = process.env.NODE_ENV
   - let production = env
   h1 Glossary
-  dl
+  dl#glossary
     each val, key in glossary
       if process.env.NODE_ENV !== 'production' || val !== ''
         dt(id=key.split(' ').join('-'))= key
