@@ -15,31 +15,15 @@ body {
     margin: 0;
 }
 
-nav {
-    background-color: $col_1;
+a {
+    color: $col_4;
 
-    ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
+    &.term {
+        color: $col_1;
+    }
 
-        li {
-            display: inline-block;
-            padding: .5em 1em;
-        }
-        
-        li:hover {
-            background-color: $col_2;
-        }
-
-        a {
-            color: $col_3_light;
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: $col_3_light;
-        }
+    &:hover {
+        color: $col_2;
     }
 }
 
@@ -57,17 +41,38 @@ header {
         font-size: 1em;
         margin: 0 0 5px 0;
     }
-}
 
-a {
-    color: $col_4;
-
-    &:hover {
-        color: $col_2;
+    nav {
+        background-color: $col_1;
+    
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+    
+            li {
+                display: inline-block;
+                padding: .5em 1em;
+            }
+            
+            li:hover {
+                background-color: $col_2;
+            }
+    
+            a {
+                color: $col_3_light;
+                text-decoration: none;
+            }
+    
+            a:hover {
+                color: $col_3_light;
+            }
+        }
     }
 }
 
 #content {
+    color: black;
     font-size: 1.2rem;
     line-height: 1.4;
     margin: 0 12.5%;
@@ -93,20 +98,20 @@ a {
         font-size: .9em;
         margin: 1em 5%;
     }
-}
 
-#glossary {
-    dt {
-        color: $col_5;
-        font-size: 1.2em;
-    }
-
-    dd {
-        background-color: $col_3_light;
-        border-left: .5em solid $col_2;
-        border-radius: 8px;
-        margin: 0 0 1em 0;
-        padding: .25em .5em;
+    #glossary {
+        dt {
+            color: $col_5;
+            font-size: 1.2em;
+        }
+    
+        dd {
+            background-color: $col_3_light;
+            border-left: .5em solid $col_2;
+            border-radius: 8px;
+            margin: 0 0 1em 0;
+            padding: .25em .5em;
+        }
     }
 }
 
