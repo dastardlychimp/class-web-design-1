@@ -1,7 +1,10 @@
-$primary: #84BAE5;
-$secondary: #253440;
-$tertiary: #49677F;
-$secondary-darkened: #152430;
+$col_1: #074358;
+$col_2: #458985;
+$col_3: #D7D6A5;
+$col_4: #DBA67B;
+$col_5: #A55C55;
+
+$col_3_light: lighten($col_3, 15%);
 
 * {
     box-sizing: border-box;
@@ -13,7 +16,7 @@ body {
 }
 
 nav {
-    background-color: $secondary;
+    background-color: $col_1;
 
     ul {
         list-style-type: none;
@@ -26,16 +29,16 @@ nav {
         }
         
         li:hover {
-            background-color: $primary;
+            background-color: $col_2;
         }
 
         a {
-            color: white;
+            color: $col_3_light;
             text-decoration: none;
         }
 
         a:hover {
-            color: white;
+            color: $col_3_light;
         }
     }
 }
@@ -44,23 +47,23 @@ header {
     margin: 0 5%;
 
     h1.heading {
-        color: $secondary;
+        color: $col_1;
         font-size: 1.8em;
         margin: 20px 0 0 0;
     }
     
     h2.subheading {
-        color: $tertiary;
+        color: $col_2;
         font-size: 1em;
         margin: 0 0 5px 0;
     }
 }
 
 a {
-    color: $secondary;
+    color: $col_4;
 
     &:hover {
-        color: $primary;
+        color: $col_2;
     }
 }
 
@@ -70,14 +73,14 @@ a {
     margin: 0 12.5%;
 
     h1 {
-        border-bottom: 4px solid $secondary;
-        color: $secondary;
+        border-bottom: 4px solid $col_1;
+        color: $col_1;
         font-size: 1.8em;
         margin: .8em 0;
     }
 
     h2 {
-        color: $tertiary;
+        color: $col_5;
         font-size: 1.4em;
         margin: .8em 0;
     }
@@ -87,7 +90,6 @@ a {
     }
 
     blockquote {
-        color: $tertiary;
         font-size: .9em;
         margin: 1em 5%;
     }
@@ -95,13 +97,13 @@ a {
 
 #glossary {
     dt {
-        color: $tertiary;
+        color: $col_5;
         font-size: 1.2em;
     }
 
     dd {
-        background-color: #DFE9EE;
-        border-left: .5em solid $secondary;
+        background-color: $col_3_light;
+        border-left: .5em solid $col_2;
         border-radius: 8px;
         margin: 0 0 1em 0;
         padding: .25em .5em;
@@ -109,15 +111,15 @@ a {
 }
 
 footer {
-    background-color: $secondary;
-    color: $tertiary;
+    background-color: $col_1;
+    color: $col_3_light;
     left: 0;
     padding: 2em 0;
     text-align: center;
     top: 100%;
 
     a {
-        color: $tertiary;
+        color: $col_3_light;
     }
 
     span {
