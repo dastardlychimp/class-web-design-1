@@ -1,0 +1,4 @@
+mixin image_single(name, alt, caption)
+  figure.image-single&attributes(attributes)
+    img(src=`${base_path}/images/blank.gif` data-echo=`${base_path}/images/${name}` alt=image)
+    figcaption= caption
