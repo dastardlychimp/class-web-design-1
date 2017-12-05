@@ -15,10 +15,13 @@ const path_build_module = path.join(path_build, config.MODULE)
 const path_build_html   = path.join(path_build_module, '/')
 const path_build_scripts = path.join(path_build_module, '/scripts')
 const path_build_sass   = path.join(path_build_module, '/css')
+const path_build_images = path.join(path_build_module, '/images')
+
 const path_templates    = path.join(__dirname, '/templates')
 const path_page         = path.join(path_templates, '/pages')
 const path_sass         = path.join(__dirname, '/sass')
 const path_scripts      = path.join(__dirname, '/scripts')
+const path_images       = path.join(__dirname, '/images')
 const path_template_funcs = path.join(path_templates, '/functions', '/compiled')
 
 const data = {
@@ -32,10 +35,24 @@ const data = {
     }
 }
 
+const buildDirectories = () => Promise.all([
+    path_build_module,
+    path_build_sass,
+    path_build_scripts,
+    path_build_images
+].map(p => makeDirPromise(p)))
+
+const writeFiles = () => Promise.all([
+    writeHtmlFiles(),
+    writeSassFiles(),
+    writeScriptFiles(),
+    writeImageFiles()
+])
+
 const start = Date.now()
 del([`${path_build_module}/*`])
-    .then(() => Promise.all([makeDirPromise(path_build_module), makeDirPromise(path_build_sass), makeDirPromise(path_build_scripts)]))
-    .then(() => Promise.all([writeHtmlFiles(), writeSassFiles(), writeScriptFiles()]))
+    .then(buildDirectories)
+    .then(writeFiles)
     .then(() => console.log(`========== BUILD FINISHED =========`))
     .then(() => console.log(`${Date.now() - start}ms`))
     .catch(console.log)
@@ -56,33 +73,23 @@ function writeHtmlFiles() {
 
                 validateHtml(html)
                 return writeFilePromise(path_file_write, html)
-                    .catch(reject)
             })
 
-            Promise.all(promises).then(resolve)
+            Promise.all(promises).then(resolve).catch(reject)
         })
     })
 }
 
 function writeSassFiles() {
-    return mapDirPromise(path_sass, (file, resolve, reject) => {
-        const path_file = path.join(path_sass, file)
-        const path_file_write = path.format({
-            dir: path_build_sass,
-            name: path.basename(file, '.scss'),
-            ext: '.css',
-        })
-        
-        const {css} = sass.renderSync({
-            file: path_file,
+    return transformFiles(path_sass, path_build_sass, '.css', (file_path) => {
+        const { css } = sass.renderSync({
+            file: file_path,
             outputStyle: 'expanded',
         })
 
         validateCss(css)
 
-        return writeFilePromise(path_file_write, css)
-            .then(resolve)
-            .catch(reject)
+        return Promise.resolve(css)
     })
 }
 
@@ -106,6 +113,10 @@ function writeScriptFiles() {
                 .pipe(fs.createWriteStream(path_write).on('finish', resolve))
         })
     })
+}
+
+function writeImageFiles() {
+    return transformFiles(path_images, path_build_images, null, readFilePromise)
 }
 
 // function compileTemplateFunctions() {
@@ -145,20 +156,47 @@ function validateCss(css) {
     })
 }
 
+function transformFiles(dir_path, build_path, ext, cb) {
+    return mapDirPromise(dir_path, (resolve, reject, file, file_path) => {
+        cb(file_path, file)
+            .then((data) => {
+                const file_ext = path.extname(file)
+                const file_write = path.format({
+                    dir: build_path,
+                    name: path.basename(file, file_ext),
+                    ext: ext ? ext : file_ext
+                })
+
+                return writeFilePromise(file_write, data)
+            })
+            .then(resolve)
+            .catch(reject)
+    })
+}
+
 function mapDirPromise(dir_path, cb) {
     return new Promise((resolve, reject) => {
         fs.readdir(dir_path, (err, data) => {
             if (err) throw err
-            const files = data.filter((file) => {
-                const full_path = path.join(dir_path, file)
-                return fs.lstatSync(full_path).isFile()
+            const files = data
+                .map((file) => ({
+                    name: file,
+                    full_path: path.join(dir_path, file)
+                }))
+                .filter((file) => fs.lstatSync(file.full_path).isFile())
+
+            const promises = files.map((file) => {
+                new Promise((resolve, reject) => cb(
+                    resolve,
+                    reject,
+                    file.name,
+                    file.full_path
+                )).catch(reject)
             })
 
-            Promise.all(
-                files.map((file) => new Promise((resolve, reject) => cb(file, resolve, reject)))
-            )
-            .then(resolve)
-            .catch(reject)
+            Promise.all(promises)
+                .then(resolve)
+                .catch(reject)
         })
     })
 }
@@ -187,6 +225,14 @@ function writeFilePromise(path, content) {
         fs.writeFile(path, content, err => {
             if (err) throw err
             else resolve()
+        })
+    })
+}
+
+function readFilePromise(path) {
+    return new Promise((resolve, reject) => {
+        fs.readFile(path, (err, data) => {
+            err ? reject(err) : resolve(data)
         })
     })
 }

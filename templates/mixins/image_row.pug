@@ -1,0 +1,6 @@
+mixin image_row(images)
+  div.image-row
+    each image in images
+      figure
+        img(src=`${base_path}/images/${image.name}` alt=image.alt)
+        figcaption= image.caption
