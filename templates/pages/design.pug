@@ -2,7 +2,7 @@ extends ../page.pug
 include ../mixins/index.pug
 
 block content
-  - var principles = ['lines', 'shapes', 'value', 'color', 'texture', 'space', 'pattern', 'contrast', 'balance', 'movement']
+  - var principles = ['lines', 'shapes', 'value', 'color', 'texture', 'space', 'pattern', 'contrast', 'balance', 'scale', 'movement']
 
   h1 Design Principles
   ul
@@ -11,12 +11,57 @@ block content
         a(href=`#${principle}`)= principle.charAt(0) + principle.slice(1)
 
   h2(id='lines') Lines
+  +image_row([
+    {name: 'lines1.jpg', alt: 'Curved building', caption: 'These Curved lines create motion and a sense of leisure'},
+    {name: 'lines2.jpg', alt: 'Pillars in water', caption: 'Vertical lines display stability'},
+    {name: 'lines3.jpg', alt: 'Light show', caption: 'Diagonal lines have motion and intensity'}
+  ])
   h2(id='shapes') Shapes
+  +image_row([
+    {name: 'shape1.jpg', alt: 'Architecture shot', caption: 'Building has a triangle shape'},
+    {name: 'shape2.jpg', alt: 'Spiral staircase', caption: 'Staircase creates a spiral, or a circle'}
+  ])
   h2(id='value') Value
+  +image_row([
+    {name: 'value1.jpg', alt: 'Man in fog', caption: 'Drama of the image is created by its value'},
+    {name: 'value2.jpg', alt: 'Steaming cup', caption: 'Elegant image made without color'}
+  ])
   h2(id='color') Color
+  +image_row([
+    {name: 'color1.jpg', alt: 'Green and orange flowers', caption: 'Beauty is from the complementary colors'}
+  ])
   h2(id='texture') Texture
+  +image_row([
+    {name: 'texture1.jpg', alt: 'Firework sparks', caption: 'Sparks have a vibrant texture'},
+    {name: 'texture2.jpg', alt: 'Rolling ocean', caption: 'The water has a smooth, yet tumultuous, texture'}
+  ])
   h2(id='space') Space
+  +image_row([
+    {name: 'space1.jpg', alt: 'Tree in night', caption: 'Positive space at the bottom, negative space at the top'},
+    {name: 'space2.jpg', alt: 'Fern on wood', caption: 'The space around the fern complements it'}
+  ])
   h2(id='pattern') Pattern
+  +image_row([
+    {name: 'pattern1.jpg', alt: 'water ringlets', caption: 'Pattern of concentric circles'},
+    {name: 'pattern2.jpg', alt: 'Stained glass window', caption: 'Repetition of shape and color from the center'}
+  ])
   h2(id='contrast') Contrast
+  +image_row([
+    {name: 'contrast1.jpg', alt: 'Contrasting scenes of war and peace', caption: 'Contrast between war and peace'}
+  ])
   h2(id='balance') Balance
+  +image_row([
+    {name: 'balance1.jpg', alt: 'Symmetrical castle', caption: 'Castle is symmetrical'},
+    {name: 'balance2.jpg', alt: 'Apple keyboard design', caption: 'The items are asymmetrical'},
+    {name: 'shape1.jpg', alt: 'Architecture shot', caption: 'Building is symmetrical'}
+  ])
+  h2(id='scale') Scale
+  +image_row([
+    {name: 'scale1.jpg', alt: 'Man looking at starts', caption: 'Large difference between the scale of the man and space'}
+  ])
   h2(id='movement') Movement
+  +image_row([
+    {name: 'movement1.jpg', alt: 'Car light stream', caption: 'Car light stream leads the eye'},
+    {name: 'movement2.jpg', alt: 'River through mountain', caption: 'River leads the eye through the scene'},
+    {name: 'movement3.jpg', alt: 'Girl looking at sunset', caption: 'The girl\'s stare leads the eye to the sunset'}
+  ])

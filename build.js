@@ -211,7 +211,6 @@ function makeDirPromise(path) {
         else {
             fs.mkdir(path, err => {
                 if (err) {
-                    let data = fs.readdirSync(path_build_module)
                     throw err
                 }
                 resolve()
