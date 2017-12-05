@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     Object.keys(glossary)
         .sort((a, b) => a.length < b.length ? 1 : -1)
         .forEach(term => {
-            console.log(term)
             const termRegex = new RegExp('\\b(' + term + ')\\b', 'gi')
             p_tags.forEach(p => p.innerHTML = p.innerHTML.replace(
                 termRegex,
@@ -24,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         })
     
     p_tags.forEach(p => Object.keys(storage).forEach(id => {
-        console.log(id, storage[id])
         return p.innerHTML = p.innerHTML.replace(id, storage[id])
     }))
 })

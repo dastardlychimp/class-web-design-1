@@ -6,12 +6,16 @@ $col_5: #A55C55;
 
 $col_3_light: lighten($col_3, 15%);
 
+/* CSS FOR ALL */
 * {
     box-sizing: border-box;
 }
 
 body {
     font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+body, h1, h2, p {
     margin: 0;
 }
 
@@ -27,6 +31,8 @@ a {
     }
 }
 
+
+/* CSS FOR HEADER */
 header {
     margin: 0 5%;
 
@@ -71,6 +77,7 @@ header {
     }
 }
 
+/* CSS FOR CONTENT */
 #content {
     color: black;
     font-size: 1.2rem;
@@ -113,8 +120,13 @@ header {
             padding: .25em .5em;
         }
     }
+
+    .favorite-photographers {
+        list-style: upper-roman;
+    }
 }
 
+/* CSS FOR FOOTER */
 footer {
     background-color: $col_1;
     color: $col_3_light;
