@@ -1,5 +1,7 @@
-import echo from './echo.min.js'
+// import echo from './echo.min.js'
+const echo = require('./echo.min.js')(document)
 
 echo.init({
-    offsetVertical: 500
+    offsetVertical: 1000,
+    throttle: 50
 })
