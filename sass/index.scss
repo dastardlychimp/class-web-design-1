@@ -9,6 +9,7 @@ $col_1_desaturate: desaturate($col_1, 50%);
 $col_3_light: lighten($col_3, 15%);
 
 // Includes
+@import './components/hover_slide';
 @import './components/form';
 
 
@@ -17,7 +18,14 @@ $col_3_light: lighten($col_3, 15%);
     box-sizing: border-box;
 }
 
+html {
+    @media screen and (min-width: 1801px) {
+        font-size: 24px;
+    }
+}
+
 body {
+    background-image: url(../images/canvas.jpg);    
     font-family: 'Barlow Semi Condensed', sans-serif;
 }
 
@@ -27,69 +35,81 @@ body, h1, h2, p {
 
 a {
     color: $col_4;
-
+    
     &.term {
         color: $col_1;
     }
-
+    
     &:hover {
         color: $col_2;
+    }
+}
+
+#wrapper {
+    background-color: white;
+    box-shadow: -1px 1px 6px 1px #232323, -4px 4px 20px 3px #555;
+    margin: 0;
+    max-width: 100%;
+
+    @media screen and (min-width: 600px) {
+        max-width: 90%;
+        margin: 1em auto;
     }
 }
 
 
 /* CSS FOR HEADER */
 header {
-    margin: 0 5%;
+    .top-bar {
+        align-items: center;
+        display: flex;
 
-    h1.heading {
-        color: $col_1;
-        font-size: 1.8em;
-        margin: 20px 0 0 0;
-    }
-    
-    h2.subheading {
-        color: $col_2;
-        font-size: 1em;
-        margin: 0 0 5px 0;
-    }
+        .svg-camera {
+            margin-left: 2%;
+            max-width: 80px;
+            width: 20%;
+            
+            @media screen and (min-width: 801px) {
+                width: 10%;
+            }
+        }
 
-    nav {
-        background-color: $col_1;
-    
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-    
-            li {
-                display: block;
-                padding: .7em -0;
-                text-align: center;
+        .title {
+            margin: 1em 0 .5em 1em;
+
+            h1.heading {
+                color: $col_1;
+                font-size: 2em;
             }
             
-            li:hover {
-                background-color: $col_2;
-            }
-    
-            a {
-                color: $col_3_light;
-                text-decoration: none;
-            }
-    
-            a:hover {
-                color: $col_3_light;
+            h2.subheading {
+                color: $col_2;
+                font-size: 1.2em;
             }
         }
+    }
+    
+    
+    nav {
+        background-color: $col_1;
 
-        @media (min-width: 800px) {
-            ul {
-                li {
-                    display: inline-block;
-                    padding: .7em 1em;
-                }
-            } 
+        a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            padding: .7em 0;
+            
+            &:hover {
+                color: white;
+            }
+
+            @media screen and (min-width: 801px) {
+                display: inline-block;
+                padding: .7em 2em;
+            }
         }
+        
     }
 }
 
@@ -98,7 +118,8 @@ header {
     color: black;
     font-size: 1.2rem;
     line-height: 1.4;
-    margin: 0 12.5%;
+    margin: 0 auto;
+    max-width: 85%;
 
     h1 {
         border-bottom: 4px solid $col_1;
@@ -156,7 +177,7 @@ header {
             text-align: center;
             font-size: .7em;
     
-            @media (min-width: 800px) {
+            @media screen and (min-width: 801px) {
                 font-size: .9em;
             }
         }
@@ -177,16 +198,16 @@ header {
             &:only-child,
             &:first-child:nth-last-child(2),
             &:first-child:nth-last-child(2) ~ figure {
-                @media (min-width: 1200px) {
+                @media screen and (min-width: 1200px) {
                     max-width: 45%;
                 }
             }
 
-            @media (min-width: 800px) {
+            @media screen and (min-width: 801px) {
                 max-width: 45%;
             }
 
-            @media (min-width: 1200px) {
+            @media screen and (min-width: 1200px) {
                 max-width: 30%;
             }
         }
@@ -200,7 +221,7 @@ header {
             max-height: 200px;
         }
 
-        @media (min-width: 800px) {
+        @media screen and (min-width: 801px) {
             max-width: 25%;
         }
     }
@@ -209,14 +230,14 @@ header {
 /* CSS FOR FOOTER */
 footer {
     background-color: $col_1;
-    color: $col_3_light;
+    color: white;
     left: 0;
     padding: 2em 0;
     text-align: center;
     top: 100%;
 
     a {
-        color: $col_3_light;
+        color: white;
     }
 
     span {

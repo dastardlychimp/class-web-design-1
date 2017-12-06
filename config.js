@@ -1,3 +1,3 @@
 module.exports = {
-    MODULE: 'module-6',
+    MODULE: 'module-7',
 }
