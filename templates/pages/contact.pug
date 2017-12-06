@@ -1,0 +1,63 @@
+extends ../page.pug
+
+append head
+  script.
+    window.contactFormScript();
+
+block content
+  h1 Contact
+  form(action="/php/FormToEmail.php" method="post" enctype="multipart/form-data" id="contact-form")
+    fieldset
+      input.subject(type="hidden" name="subject")
+      input(type="hidden" name="redirect" value=`${base_path}/thanks.html`)
+
+      h3.question Why would you like to contact me?
+      select.reason(name="reason")
+        option(value="comment") I want to leave a comment
+        option(value="question") I have a question to ask
+        option(value="bug") I have a bug to report
+
+    fieldset.contact-info
+      legend Contact info
+      div.input-piece
+        label.required Email
+          input(type="email", name="email" title="email" required)
+      div.input-piece
+        label.required Name
+          input(type="text", name="name" pattern="^[^\\d]+$" title="name" required)
+      h3.question Can I contact you?
+      div.input-piece
+        label
+          input(type="radio", name="contact" value="email" checked)
+          | Yes, by email
+        label
+          input(type="radio" name="contact" value="text")
+          | Yes, by text
+        label
+          input(type="radio", name="contact" value="none")
+          | No
+      div.phone-piece.input-piece
+        label.required Phone number
+          input(type="tel", name="phone" title="phone")
+
+    fieldset
+      legend Details
+      div.problem
+        h3.question Where was the problem?
+        div.input-piece
+          label.required
+            input(type="checkbox", name="about")
+            | About page
+          label
+            input(type="checkbox", name="exposure")
+            | Exposure page
+          label
+            input(type="checkbox", name="design")
+            | Design page
+          label
+            input(type="checkbox", name="glossary")
+            | Glossary page
+      div.input-piece
+        label.required Details
+          textarea.details(name="details", cols="40", rows="8" required)
+    button.submit(type="submit")

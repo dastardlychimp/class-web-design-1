@@ -31,7 +31,8 @@ const data = {
         'index': 'About',
         'exposure': 'Exposure',
         'design': 'Design Principles',
-        'glossary': 'Glossary'
+        'glossary': 'Glossary',
+        'contact': 'Contact'
     }
 }
 

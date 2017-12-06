@@ -1,10 +1,16 @@
+
 $col_1: #074358;
 $col_2: #458985;
 $col_3: #D7D6A5;
 $col_4: #DBA67B;
 $col_5: #A55C55;
 
+$col_1_desaturate: desaturate($col_1, 50%);
 $col_3_light: lighten($col_3, 15%);
+
+// Includes
+@import './components/form';
+
 
 /* CSS FOR ALL */
 * {
@@ -145,7 +151,7 @@ header {
         }
 
         figcaption {
-            color: desaturate($col_1, 50%);
+            color: $col_1_desaturate;
             max-width: 100%;
             text-align: center;
             font-size: .7em;
