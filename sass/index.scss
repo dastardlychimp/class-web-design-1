@@ -94,20 +94,23 @@ header {
         background-color: $col_1;
 
         a {
+            border-bottom: 2px solid $col_2;
             color: white;
             display: block;
             padding: .8em 0;
             text-align: center;
             text-decoration: none;
-            vertical-align: top;
             
             &:hover {
                 color: white;
             }
-
+            
             @media screen and (min-width: 801px) {
+                border: 0;
                 display: inline-block;
+                margin-bottom: 0;
                 padding: .8em 2em;
+                vertical-align: top;
             }
         }
         
