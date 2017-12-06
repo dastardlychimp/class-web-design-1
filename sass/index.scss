@@ -94,11 +94,12 @@ header {
         background-color: $col_1;
 
         a {
-            display: block;
             color: white;
-            text-decoration: none;
+            display: block;
+            padding: .8em 0;
             text-align: center;
-            padding: .7em 0;
+            text-decoration: none;
+            vertical-align: top;
             
             &:hover {
                 color: white;
@@ -106,7 +107,7 @@ header {
 
             @media screen and (min-width: 801px) {
                 display: inline-block;
-                padding: .7em 2em;
+                padding: .8em 2em;
             }
         }
         
@@ -159,7 +160,15 @@ header {
     }
 
     .favorite-photographers {
-        list-style: upper-roman;
+        li {
+            list-style-image: url(../images/png_torso.png);
+        }
+    }
+
+    .list-icon-camera {
+        li {
+            list-style-image: url(../images/png_camera.png);
+        }
     }
 
     .image-single {
@@ -229,7 +238,8 @@ header {
 
 /* CSS FOR FOOTER */
 footer {
-    background-color: $col_1;
+    background: linear-gradient(to right, darken($col_2, 10%), $col_1 70%);
+    // background-color: $col_1;
     color: white;
     left: 0;
     padding: 2em 0;
