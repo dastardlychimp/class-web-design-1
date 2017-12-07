@@ -237,6 +237,75 @@ header {
             max-width: 25%;
         }
     }
+
+    #basic-color-emotions {
+        margin: 1em auto;
+        max-width: 90%;
+        border-collapse: collapse;
+        font-size: .9em;
+
+        @media screen and (min-width: 801px) {
+            font-size: 1em;
+        }
+        
+        tr {
+            padding: .5em 0;
+
+            th {
+                color: $col_1;
+            }
+
+            %color-box {
+                @media screen and (min-width: 600px) {
+                    border-radius: .5em;
+                    content: '';
+                    display: inline-block;
+                    height: .5em;
+                    width: .5em;
+                    position: relative;
+                    margin-right: .5em
+                }
+            }
+            
+            th, td {
+                text-align: left;
+                padding: .2em 1em;
+
+                &:nth-child(1) {
+                    padding-right: 1.5em;
+                }
+
+                $colors: (
+                    white: white,
+                    ivory: #ECF0F1,
+                    red: #F22613,
+                    orange: #F9690E,
+                    yellow: #F4D03F,
+                    brown: #87421F,
+                    grey: #ABB7B7,
+                    green: #26A65B,
+                    purple: #763568,
+                    blue: #1F4788,
+                    black: black
+                );
+
+                @each $c_name, $c_vis in $colors {
+                    &.color-box.#{$c_name}:before {
+                        @extend %color-box;
+                        background-color: $c_vis;
+                    }
+                }
+            }
+
+            &:nth-child(even) {
+                background-color: $col_3_light;
+            }
+
+            &:hover {
+                background-color: lighten($col_2, 30%);
+            }
+        }
+    }
 }
 
 /* CSS FOR FOOTER */
