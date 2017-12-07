@@ -16,12 +16,14 @@ const path_build_html   = path.join(path_build_module, '/')
 const path_build_scripts = path.join(path_build_module, '/scripts')
 const path_build_sass   = path.join(path_build_module, '/css')
 const path_build_images = path.join(path_build_module, '/images')
+const path_build_media  = path.join(path_build_module, '/media')
 
 const path_templates    = path.join(__dirname, '/templates')
 const path_page         = path.join(path_templates, '/pages')
 const path_sass         = path.join(__dirname, '/sass')
 const path_scripts      = path.join(__dirname, '/scripts')
 const path_images       = path.join(__dirname, '/images')
+const path_media        = path.join(__dirname, '/media')
 const path_template_funcs = path.join(path_templates, '/functions', '/compiled')
 
 const data = {
@@ -41,14 +43,16 @@ const buildDirectories = () => Promise.all([
     path_build_module,
     path_build_sass,
     path_build_scripts,
-    path_build_images
+    path_build_images,
+    path_build_media,
 ].map(p => makeDirPromise(p)))
 
 const writeFiles = () => Promise.all([
     writeHtmlFiles(),
     writeSassFiles(),
     writeScriptFiles(),
-    writeImageFiles()
+    writeImageFiles(),
+    writeMediaFiles(),
 ])
 
 const start = Date.now()
@@ -119,6 +123,10 @@ function writeScriptFiles() {
 
 function writeImageFiles() {
     return transformFiles(path_images, path_build_images, null, readFilePromise)
+}
+
+function writeMediaFiles() {
+    return transformFiles(path_media, path_build_media, null, readFilePromise)
 }
 
 // function compileTemplateFunctions() {

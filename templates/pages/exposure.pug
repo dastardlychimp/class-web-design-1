@@ -1,9 +1,12 @@
 extends ../page.pug
+include ../mixins/index.pug
 
 block content
   h1 Exposure
   p.
     Exposure is the amount of light captured. It is determined by three settings, also known as the exposure triangle.
+  p.
+    There is a large chunk of text coming up. Check out the #[strong #[+link_external(`${base_path}/media/photo-exposure.pdf`, '!exposure! graphic')]] for a visual display of the information.
   ol
     li
       a(href='#aperture') Aperture

@@ -8,18 +8,27 @@ document.addEventListener("DOMContentLoaded", function(event) {
     Object.keys(glossary)
         .sort((a, b) => a.length < b.length ? 1 : -1)
         .forEach(term => {
-            const termRegex = new RegExp('\\b(' + term + ')\\b', 'gi')
+            const termRegex = new RegExp(`(^|\\s)(${term})(^|\\s)`, 'gi')
+            const termRegexIgnore = new RegExp(`!(${term})!`, 'gi')
             p_tags.forEach(p => p.innerHTML = p.innerHTML.replace(
                 termRegex,
-                (match, termCaseSensitive) => { 
+                (match, open, termCaseSensitive, close) => { 
                     let id = Math.random()
-                    storage[id] = term_template({
+                    storage[id] = open + term_template({
                         key: term.split(' ').join('-'),
                         term: termCaseSensitive
-                    })
+                    }) + close
                     return id;
-                }
-            ))
+                })
+                .replace(
+                    termRegexIgnore,
+                    (match, termCaseSensitive) => {
+                        console.log(match)
+                        let id = Math.random()
+                        storage[id] = termCaseSensitive
+                        return id;
+                })
+            )
         })
     
     p_tags.forEach(p => Object.keys(storage).forEach(id => {
