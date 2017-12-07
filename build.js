@@ -32,7 +32,8 @@ const data = {
         'exposure': 'Exposure',
         'design': 'Design Principles',
         'glossary': 'Glossary',
-        'contact': 'Contact'
+        'contact': 'Contact',
+        'other': 'Other'
     }
 }
 

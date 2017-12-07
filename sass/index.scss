@@ -238,6 +238,23 @@ header {
         }
     }
 
+    .iframe-container {
+        height: 300px;
+        position: relative;
+        width: 60%;
+
+
+        iframe {
+            bottom: 0;
+            height: 100%;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100%;
+        }
+    }
+
     #basic-color-emotions {
         margin: 1em auto;
         max-width: 90%;
