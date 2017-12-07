@@ -45,6 +45,11 @@ a {
     }
 }
 
+audio {
+    min-width: 50%;
+    max-width: 100%;
+}
+
 #wrapper {
     background-color: white;
     box-shadow: -1px 1px 6px 1px #232323, -4px 4px 20px 3px #555;
@@ -238,13 +243,24 @@ header {
         }
     }
 
+    .map-details {
+        font-size: .7em;
+    }
+
     .iframe-container {
-        height: 300px;
+        height: 200px;
         position: relative;
-        width: 60%;
+        width: 100%;
+
+        @media screen and (min-width: 600px) {
+            min-width: 60%;
+            max-width: 80%;
+            height: 300px;
+        }
 
 
         iframe {
+            border: 0;
             bottom: 0;
             height: 100%;
             left: 0;

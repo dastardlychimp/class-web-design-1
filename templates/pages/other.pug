@@ -1,4 +1,5 @@
 extends ../page.pug
+include ../mixins/index.pug
 
 block content
   h1 Other
@@ -7,3 +8,18 @@ block content
     Here is a video on posing I have found very interesting.
   .iframe-container
     <iframe src="https://www.youtube.com/embed/kmi9TPQ57Mo" allowfullscreen></iframe>
+  h2 Photography Tip
+  p.
+    Here is a great photography tip from Ibarionex Perello, producer of the #[+link_external("http://ibarionexperello.squarespace.com/thecandidframe/", "Candid Frame")] podcast, on the #[+link_external("https://improvephotography.com/category/roundtable/", "Improve Photography")] podcast.
+  audio(controls)
+    source(src=`${base_path}/media/IP-Roundtable-EP-253-excerpt.ogg` type="audio/ogg")
+    source(src=`${base_path}/media/IP-Roundtable-EP-253-excerpt.mp3` type="audio/mpeg")
+    | Your browser doesn't support audio.
+  h2 Salt Flats
+  p.
+    The salt flats are a great place to take pictures in Utah.
+  span.map-details.
+    Bonneville Salt Flats, Utah 84083 #[+link_external("https://goo.gl/maps/V4Yn3biwsC12", "google map")]
+
+  .iframe-container
+    <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d546334.4081235543!2d-113.70511427024236!3d40.847734265870564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x80ac39c47cd112bd%3A0x4076930f09544f7a!2sBonneville+Salt+Flats%2C+Utah+84083!3m2!1d40.7787454!2d-113.8352043!5e0!3m2!1sen!2sus!4v1512674668432" allowfullscreen></iframe>
