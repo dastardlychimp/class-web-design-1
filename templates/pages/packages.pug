@@ -1,7 +1,49 @@
 extends ../page.pug
+include ../mixins/index.pug
 
 block root_variables
   - active_page = 'packages'
 
 block content
   h1 Packages
+  .package
+    +image_single('piersland-house.jpg', 'Piersland house hotel')
+    .package-info
+      h2.name Piersland House Hotel
+      p.description.
+        #[+link_external('http://www.piersland.co.uk/', 'Piersland House Hotel')] is a lovely country home hotel with beautiful grounds.
+      ul.info
+        li Includes a #[+link_external('https://www.kayak.com/Cheap-Glasgow-Car-Rentals.13012.cars.ksp', 'Kayak rental car')]
+        li Pets allowed
+        li Includes Breakfast and Dinner
+        li $100 + $50 for each additional person.
+      div.reserve
+        a.hover-slide(href=`${base_path}/reserve.html`) Reserve
+
+  .package
+    +image_single('auchrannie-resort.jpg', 'Auchrannie Luxury Lodges')
+    .package-info
+      h2.name Auchrannie Resort
+      p.description.
+        #[+link_external('http://www.auchrannie.co.uk/', 'Auchrannie resort')] is a wonderful hotel where outdoor adventures are only a few steps away.
+      ul.info
+        li Includes a #[+link_external('https://www.kayak.com/Cheap-Glasgow-Car-Rentals.13012.cars.ksp', 'Kayak rental car')]
+        li Pets allowed
+        li Includes Breakfast and Dinner
+        li $130 + $60 for each additional person
+      div.reserve
+        a.hover-slide(href=`${base_path}/reserve.html`) Reserve
+
+  .package
+    +image_single('turnberry-resort.jpg', 'Turnberry Resort')
+    .package-info
+      h2.name Trump Turnberry, Luxary Resort
+      p.description.
+        #[+link_external('http://www.trumpturnberry.com/', 'Trump Turnberry')] is an incredible luxary hotel set over the ocean view of Alisa Craig.
+      ul.info
+        li Includes a #[+link_external('https://www.kayak.com/Cheap-Glasgow-Car-Rentals.13012.cars.ksp', 'Kayak rental car')]
+        li Pets allowed
+        li Includes Breakfast and Dinner
+        li $300 + $130 for each additional person
+      div.reserve
+        a.hover-slide(href=`${base_path}/reserve.html`) Reserve

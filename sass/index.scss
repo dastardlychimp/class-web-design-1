@@ -33,10 +33,10 @@ body, h1, h2, p {
 }
 
 a {
-    color: $col_4;
+    color: desaturate($col_1, 30%);
 
     &:hover {
-        background-color: $col_3;
+        color: $col_3;
     }
 }
 
@@ -118,7 +118,7 @@ header {
     }
 
     h2 {
-        color: $col_5;
+        color: $col_2;
         font-size: 1.4em;
         margin: .8em 0;
     }
@@ -276,71 +276,63 @@ header {
         }
     }
 
-    #basic-color-emotions {
-        margin: 1em auto;
-        max-width: 90%;
-        border-collapse: collapse;
+    .package {
+        display: flex;
+        flex-direction: column;
         font-size: .9em;
-
-        @media screen and (min-width: 801px) {
-            font-size: 1em;
-        }
+        justify-content: space-between;
+        margin-bottom: 2em;
+        background-color: lighten($col_2, 75%);
+        border-radius: 2em;
+        padding: 1em;
         
-        tr {
-            padding: .5em 0;
+        @media screen and (min-width: 801px) {
+            align-items: center;
+            flex-direction: row;
+            padding: 1.5em;
+        }
 
-            th {
-                color: $col_1;
-            }
-
-            %color-box {
-                @media screen and (min-width: 600px) {
-                    border-radius: .5em;
-                    content: '';
-                    display: inline-block;
-                    height: .5em;
-                    width: .5em;
-                    position: relative;
-                    margin-right: .5em
-                }
-            }
+        .image-single {
+            display: block;
             
-            th, td {
-                text-align: left;
-                padding: .2em 1em;
-
-                &:nth-child(1) {
-                    padding-right: 1.5em;
-                }
-
-                $colors: (
-                    white: white,
-                    ivory: #ECF0F1,
-                    red: #F22613,
-                    orange: #F9690E,
-                    yellow: #F4D03F,
-                    brown: #87421F,
-                    grey: #ABB7B7,
-                    green: #26A65B,
-                    purple: #763568,
-                    blue: #1F4788,
-                    black: black
-                );
-
-                @each $c_name, $c_vis in $colors {
-                    &.color-box.#{$c_name}:before {
-                        @extend %color-box;
-                        background-color: $c_vis;
-                    }
-                }
+            @media screen and (min-width: 801px) {
+                display: inline-block;
+                max-width: 35%;
             }
 
-            &:nth-child(even) {
-                background-color: $col_3_light;
+            img {
+                width: initial;
+            }
+        }
+
+        .package-info {
+            display: block;
+            
+            @media screen and (min-width: 801px) {
+                display: inline-block;
+                max-width: 60%;
             }
 
-            &:hover {
-                background-color: lighten($col_2, 30%);
+            h2 {
+                margin-top: 0;
+            }
+        }
+
+        .reserve {
+            text-align: center;
+
+            a {
+                background-color: $col_1;
+                color: white !important;
+                display: inline-block;
+                margin: 0 auto;
+                padding: .5em 2em;
+                text-align: center;
+                text-decoration: none;
+    
+                &:hover {
+                    color: white;
+                }
             }
         }
     }
@@ -350,6 +342,7 @@ header {
 footer {
     background-color: $col_1;
     // border-radius: 2em;
+    clear: both;
     color: white;
     left: 0;
     padding: 1em 0;
