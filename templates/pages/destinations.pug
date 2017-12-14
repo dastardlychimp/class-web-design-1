@@ -1,0 +1,19 @@
+extends ../page.pug
+
+block root_variables
+  - active_page = 'destinations'
+
+block content
+  h1 Destinations
+  p.
+    Here are some of the fabulous places we have been fortunate in attending in previous years.
+  p.
+    There will be at minimum of ten years before we consider a destination again.
+  #destinations
+    each destination in destinations
+      figure.image-single
+        img(src=`${base_path}/images/${destination.src}` alt=destination.alt)
+        figcaption
+          span.location= destination.location
+          span.year= destination.date
+

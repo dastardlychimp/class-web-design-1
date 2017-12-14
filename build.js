@@ -8,7 +8,7 @@ const babelify      = require('babelify')
 const validatorHtml = require('html-validator')
 const validatorCss  = require('css-validator')
 const config        = require('./config')
-const glossary      = require('./glossary')
+const data          = require('./data')
 
 const path_build        = path.join(__dirname, '/build')
 const path_build_module = path.join(path_build, config.MODULE)
@@ -26,18 +26,7 @@ const path_images       = path.join(__dirname, '/images')
 const path_media        = path.join(__dirname, '/media')
 const path_template_funcs = path.join(path_templates, '/functions', '/compiled')
 
-const data = {
-    base_path: '/' + config.MODULE,
-    glossary,
-    pages: {
-        'index': 'About',
-        'exposure': 'Exposure',
-        'design': 'Design Principles',
-        'glossary': 'Glossary',
-        'contact': 'Contact',
-        'other': 'Other'
-    }
-}
+data.base_path = '/' + config.MODULE
 
 const buildDirectories = () => Promise.all([
     path_build_module,

@@ -1,4 +1,6 @@
 include ./mixins/index.pug
+block root_variables
+  - active_page = 'index'
 
 doctype html
 html(lang='en')
@@ -14,23 +16,22 @@ html(lang='en')
     div#wrapper
       // HEAD
       header
-        .top-bar
-          +svg_camera()
-          div.title
-            h1.heading First Capture
-            h2.subheading A place to start your photography
+        div.title Winguard Travels
         nav
           each name, page in pages
+            if page === active_page
+              a(href=`${base_path}/${page}.html`).hover-slide.active= name
+            else
               a(href=`${base_path}/${page}.html`).hover-slide= name
 
       // CONTENT
       #content
         block content
 
-      // FOOT
-      block foot
-        br
-        footer
-          span &copy; First Capture 2017
-          | &bullet;
-          span Darien Hess
+    // FOOT
+    block foot
+      br
+      footer
+        span &copy; Winguard Travels 2017
+        | &bullet;
+        span Built by Darien Hess

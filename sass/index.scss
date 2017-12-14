@@ -1,7 +1,7 @@
 
-$col_1: #074358;
-$col_2: #458985;
-$col_3: #D7D6A5;
+$col_1: #F49F05;
+$col_2: #37333F;
+$col_3: #02578F;
 $col_4: #DBA67B;
 $col_5: #A55C55;
 
@@ -11,7 +11,7 @@ $col_3_light: lighten($col_3, 15%);
 // Includes
 @import './components/hover_slide';
 @import './components/form';
-
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|PT+Serif|Courgette');
 
 /* CSS FOR ALL */
 * {
@@ -25,8 +25,7 @@ html {
 }
 
 body {
-    background-image: url(../images/canvas.jpg);    
-    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 body, h1, h2, p {
@@ -35,13 +34,9 @@ body, h1, h2, p {
 
 a {
     color: $col_4;
-    
-    &.term {
-        color: $col_1;
-    }
-    
+
     &:hover {
-        color: $col_2;
+        background-color: $col_3;
     }
 }
 
@@ -51,58 +46,35 @@ audio {
 }
 
 #wrapper {
-    background-color: white;
-    box-shadow: -1px 1px 6px 1px #232323, -4px 4px 20px 3px #555;
-    margin: 0;
-    max-width: 100%;
-
-    @media screen and (min-width: 600px) {
-        max-width: 90%;
-        margin: 2em auto;
-    }
+    max-width: 90%;
+    margin: 0 auto;
 }
 
 
 /* CSS FOR HEADER */
 header {
-    .top-bar {
-        align-items: center;
-        display: flex;
-
-        .svg-camera {
-            margin-left: 2%;
-            max-width: 80px;
-            width: 20%;
-            
-            @media screen and (min-width: 801px) {
-                width: 10%;
-            }
-        }
-
-        .title {
-            margin: 1em 0 .5em 1em;
-
-            h1.heading {
-                color: $col_1;
-                font-size: 2em;
-            }
-            
-            h2.subheading {
-                color: $col_2;
-                font-size: 1.2em;
-            }
-        }
+    .title {
+        font-family: 'Courgette';
+        font-size: 2em;
+        color: $col_2;
+        margin: 2%;
     }
-    
-    
-    nav {
-        background-color: $col_1;
 
+    nav {
+        
+        @media screen and (min-width: 801px) {
+            background-color: $col_1;
+            border-radius: 1.5em;
+            padding: 0 1em;
+        }
+    
         a {
-            border-bottom: 2px solid $col_2;
+            background-color: $col_1;
+            border-radius: 2em;
             color: white;
             display: block;
-            padding: .8em 0;
+            padding: .6em 0;
+            margin-bottom: .5em;
             text-align: center;
             text-decoration: none;
             
@@ -110,17 +82,22 @@ header {
                 color: white;
             }
             
+            &.active {
+                background-color: $col_2;
+            }
+            
             @media screen and (min-width: 801px) {
-                border: 0;
+                border-radius: initial;
                 display: inline-block;
                 margin-bottom: 0;
-                padding: .8em 2em;
+                padding: .6em 1em;
                 vertical-align: top;
             }
         }
-        
     }
 }
+    
+    
 
 /* CSS FOR CONTENT */
 #content {
@@ -128,10 +105,13 @@ header {
     font-size: 1.2rem;
     line-height: 1.4;
     margin: 0 auto;
-    max-width: 85%;
+    max-width: 100%;
+    
+    @media screen and (min-width: 600px) {
+        max-width: 70%;
+    }
 
     h1 {
-        border-bottom: 4px solid $col_1;
         color: $col_1;
         font-size: 1.8em;
         margin: .8em 0;
@@ -152,53 +132,78 @@ header {
         margin: 1em 5%;
     }
 
-    #glossary {
-        dt {
-            color: $col_5;
-            font-size: 1.2em;
+    #destinations {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        
+        @media screen and (min-width: 600px) and (max-width: 1400px) {
+            margin: 0 -10%;
         }
-    
-        dd {
-            background-color: $col_3_light;
-            border-left: .5em solid $col_2;
-            border-radius: 8px;
-            margin: 0 0 1em 0;
-            padding: .25em .5em;
-        }
-    }
 
-    .favorite-photographers {
-        li {
-            list-style-image: url(../images/png_torso.png);
-        }
-    }
+        .image-single {
+            margin-bottom: 1em;
 
-    .list-icon-camera {
-        li {
-            list-style-image: url(../images/png_camera.png);
+            @media screen and (min-width: 600px) {
+                max-width: 48%;
+            }
+
+            img {
+                border: solid .5em $col_2;
+            }
+
+            figcaption {
+                span.location {
+                    font-size: 1.1em;
+                }
+                span.year {
+                    letter-spacing: .2em;
+                    font-weight: 700;
+                }
+            }
         }
     }
 
     .image-single {
-        display: inline-block;
-        margin: .5em;
-
+        margin: .2em;
+        max-width: 100%;
+        
         img {
+            width: 300px;
             max-width: 100%;
-            max-height: 300px;
         }
 
         figcaption {
-            color: $col_1_desaturate;
             max-width: 100%;
             text-align: center;
             font-size: .7em;
-    
-            @media screen and (min-width: 801px) {
-                font-size: .9em;
+
+            span {
+                display: block;
             }
         }
     }
+
+    // .image-single {
+    //     display: inline-block;
+    //     margin: .2em;
+
+    //     img {
+    //         max-width: 100%;
+    //         max-height: 300px;
+    //     }
+
+    //     figcaption {
+    //         color: $col_1_desaturate;
+    //         max-width: 100%;
+    //         text-align: center;
+    //         font-size: .7em;
+    
+    //         @media screen and (min-width: 801px) {
+    //             font-size: .9em;
+    //         }
+    //     }
+    // }
 
     .image-row {
         display: flex;
@@ -343,11 +348,11 @@ header {
 
 /* CSS FOR FOOTER */
 footer {
-    background: linear-gradient(to right, darken($col_2, 10%), $col_1 70%);
-    // background-color: $col_1;
+    background-color: $col_1;
+    // border-radius: 2em;
     color: white;
     left: 0;
-    padding: 2em 0;
+    padding: 1em 0;
     text-align: center;
     top: 100%;
 

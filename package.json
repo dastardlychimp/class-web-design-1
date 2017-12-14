@@ -8,7 +8,7 @@
     "debugger": "cross-env NODE_ENV=development nodemon inspect build.js -e js,pug,scss --ignore build/",
     "production": "cross-env NODE_ENV=production node build.js",
     "develop-reload": "npm run develop | npm run reload",
-    "reload": "reload -d build/ -s module-8/index.html -b",
+    "reload": "reload -d build/ -s final/index.html -b",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
